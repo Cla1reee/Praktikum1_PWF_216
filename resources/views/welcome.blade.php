@@ -11,7 +11,7 @@
         <h1 class="text-2xl font-bold text-gray-800 mb-4">Praktikum PWF - Pertemuan 1</h1>
         
         <div class="mb-6 text-left border-t border-b py-4">
-            <p class="text-gray-600"><strong>Nama:</strong> [Isi Nama Lengkap Anda]</p>
+            <p class="text-gray-600"><strong>Nama:</strong> Hafizh Harimurti</p>
             <p class="text-gray-600"><strong>NIM:</strong> 20230140216</p>
         </div>
 
