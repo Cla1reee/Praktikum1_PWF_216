@@ -1,6 +1,6 @@
 Tugas1:
 <img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/c59bbe89-b244-481f-8e70-c0014b367663" /> <br>
-Tugas2:
+Tugas2: <br>
 Register:
 <img width="1920" height="1020" alt="Screenshot 2026-03-02 085730" src="https://github.com/user-attachments/assets/e3c8afaa-d5a5-4653-8a0d-29832d8584a8" /> <br>
 Login:
