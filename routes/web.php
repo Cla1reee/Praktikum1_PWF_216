@@ -22,6 +22,10 @@ Route::middleware('auth')->group(function () {
     // Rute Tambahan untuk Tugas 2 (About Me)
     // Pastikan diarahkan ke fungsi 'about' di Controller 
     Route::get('/about', [AboutController::class, 'index'])->name('about');
+    
+    Route::get('/product/export', function () {
+        return 'Selamat! Anda berhasil masuk ke halaman Export khusus Admin.';
+    })->middleware('can:export-product')->name('product.export');
 });
 
 require __DIR__.'/auth.php';
