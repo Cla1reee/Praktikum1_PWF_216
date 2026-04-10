@@ -14,6 +14,17 @@ Migration: <br>
 <img width="1920" height="1080" alt="Screenshot 2026-03-08 084425" src="https://github.com/user-attachments/assets/34be9cad-533e-4338-88f7-a58e8365d341" /> <br>
 Database: <br>
 <img width="981" height="414" alt="image" src="https://github.com/user-attachments/assets/ade33f7e-11ec-471d-99ec-9a019bae0e5e" /> <br>
+## Tugas5: <br>
+Navigation Bar: <br>
+<img width="1919" height="1029" alt="Screenshot 2026-04-10 212419" src="https://github.com/user-attachments/assets/9d9ce700-1f78-43f1-9536-7d4b6ca93a60" /> <br>
+Export Data Product: <br>
+<img width="1910" height="1023" alt="Screenshot 2026-04-10 212456" src="https://github.com/user-attachments/assets/acdcaf71-e36b-4827-88d2-de7a74e425ab" /> <br>
+ProductPolicy.php: <br>
+<img width="1920" height="1080" alt="Screenshot 2026-04-10 212216" src="https://github.com/user-attachments/assets/a8c15147-24d2-45b3-a3e0-928e0b3d999b" /> <br>
+
+
+
+
 
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
