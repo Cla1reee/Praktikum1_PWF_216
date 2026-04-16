@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AboutController;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,9 @@ Route::middleware('auth')->group(function () {
     // Rute Tambahan untuk Tugas 2 (About Me)
     // Pastikan diarahkan ke fungsi 'about' di Controller 
     Route::get('/about', [AboutController::class, 'index'])->name('about');
+
+    Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
+    Route::post('/product', [ProductController::class, 'store'])->name('product.store');
     
     Route::get('/product/export', function () {
         return 'Selamat! Anda berhasil masuk ke halaman Export khusus Admin.';
