@@ -18,10 +18,24 @@ class ProductController extends Controller
     // Memproses data dari form tambah produk (Validasi bekerja di sini)
     public function store(StoreProductRequest $request)
     {
+        // 1. Ambil data yang sudah lolos validasi
         $validated = $request->validated();
         
-        // Data pasti valid jika lolos ke baris ini, lanjut simpan ke database
+        // 2. Suntikkan ID user yang sedang login secara otomatis
+        $validated['user_id'] = auth()->id();
+        
+        // 3. Simpan ke database
         Product::create($validated);
-        return redirect()->back()->with('success', 'Produk berhasil ditambahkan!');
+        
+        return redirect()->route('product.index')->with('success', 'Produk berhasil ditambahkan!');
+    }
+
+    public function index()
+    {
+        // Mengambil semua data produk milik user yang sedang login
+        $products = Product::where('user_id', auth()->id())->get();
+        
+        // Kirim data ke view product/index.blade.php
+        return view('product.index', compact('products'));
     }
 }
