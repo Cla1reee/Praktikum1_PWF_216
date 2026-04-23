@@ -26,6 +26,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
     Route::post('/product', [ProductController::class, 'store'])->name('product.store');
     Route::get('/product', [ProductController::class, 'index'])->name('product.index');
+
+    // Rute untuk menampilkan form Edit
+    Route::get('/product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
+
+    Route::put('/product/{product}', [ProductController::class, 'update'])->name('product.update');
+
+    // Rute untuk memproses Delete (Perhatikan method-nya delete, bukan get!)
+    Route::delete('/product/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
     
     Route::get('/product/export', function () {
         return 'Selamat! Anda berhasil masuk ke halaman Export khusus Admin.';
