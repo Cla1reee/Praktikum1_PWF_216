@@ -31,9 +31,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
 
     Route::put('/product/{product}', [ProductController::class, 'update'])->name('product.update');
-
-    // Rute untuk memproses Delete (Perhatikan method-nya delete, bukan get!)
     Route::delete('/product/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
+    Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');
     
     Route::get('/product/export', function () {
         return 'Selamat! Anda berhasil masuk ke halaman Export khusus Admin.';

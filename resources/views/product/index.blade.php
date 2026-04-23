@@ -31,7 +31,10 @@
                     <tbody>
                         @forelse($products as $product)
                             <tr class="hover:bg-gray-50">
-                                <td class="border border-gray-300 p-3">{{ $product->name }}</td>
+                                <td class="border border-gray-300 p-3 text-left">
+                                    <a href="{{ route('product.show', $product->id) }}" class="text-blue-600 hover:underline">
+                                        {{ $product->name }}
+                                    </a>
                                 <td class="border border-gray-300 p-3 text-center">{{ $product->qty }}</td>
                                 <td class="border border-gray-300 p-3 text-right">Rp {{ number_format($product->price, 0, ',', '.') }}</td>
                                 <td class="border border-gray-300 p-3 text-center">

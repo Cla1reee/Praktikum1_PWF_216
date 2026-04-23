@@ -61,4 +61,13 @@ class ProductController extends Controller
         
         return redirect()->route('product.index')->with('success', 'Data produk berhasil dihapus secara permanen!');
     }
+
+    // Menampilkan detail satu produk secara spesifik
+    public function show(Product $product)
+    {
+        // Pastikan relasi user (owner) dimuat jika Anda ingin menampilkan nama pemiliknya
+        $product->load('user');
+        
+        return view('product.show', compact('product'));
+    }
 }

@@ -22,7 +22,21 @@ class UpdateProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name'  => 'required|string|max:255',
+            'qty'   => 'required|integer', 
+            'price' => 'required|numeric',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'Nama produk wajib diisi.',
+            'name.max'      => 'Nama produk tidak boleh lebih dari 255 karakter.',
+            'qty.required'  => 'Jumlah (kuantitas) produk wajib diisi.',
+            'qty.integer'   => 'Jumlah produk harus berupa angka bulat.',
+            'price.required'=> 'Harga produk wajib diisi.',
+            'price.numeric' => 'Harga produk harus berupa angka yang valid.',
         ];
     }
 }
