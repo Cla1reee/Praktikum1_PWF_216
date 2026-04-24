@@ -20,6 +20,14 @@
                     <x-nav-link :href="route('product.index')" :active="request()->routeIs('product.*')">
                         {{ __('Data Product') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('category.index')" :active="request()->routeIs('category.*')">
+                        {{ __('Category') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('todo.index')" :active="request()->routeIs('todo.*')">
+                        {{ __('Todo') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -79,6 +87,15 @@
             <x-responsive-nav-link :href="route('product.index')" :active="request()->routeIs('product.*')">
                 {{ __('Data Product') }}
             </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('category.index')" :active="request()->routeIs('category.*')">
+                {{ __('Category') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('todo.index')" :active="request()->routeIs('todo.*')">
+                {{ __('Todo') }}
+            </x-responsive-nav-link>
+
         </div>
 
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">

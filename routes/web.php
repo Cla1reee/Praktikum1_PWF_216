@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TodoController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -33,6 +35,11 @@ Route::middleware('auth')->group(function () {
     Route::put('/product/{product}', [ProductController::class, 'update'])->name('product.update');
     Route::delete('/product/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
     Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');
+
+    // Rute CRUD mutlak untuk Kategori
+    Route::resource('category', CategoryController::class);
+
+    Route::resource('todo', TodoController::class);
     
     Route::get('/product/export', function () {
         return 'Selamat! Anda berhasil masuk ke halaman Export khusus Admin.';
