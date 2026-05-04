@@ -1,6 +1,6 @@
 ## Praktikum 9 20230140216
 Halaman Scramble: <br>
-<img width="1919" height="1029" alt="image" src="https://github.com/user-attachments/assets/5d602dde-28bd-49da-9f93-2189a28762e0" /> <br>
+<img width="1919" height="1025" alt="image" src="https://github.com/user-attachments/assets/1edd950c-d0f0-47da-a6ce-65bfca5026b0" /> <br>
 Login: <br>
 <img width="518" height="545" alt="image" src="https://github.com/user-attachments/assets/94735c10-3d46-456f-9145-b6f278104ea1" /> <br>
 GET Category: <br>
