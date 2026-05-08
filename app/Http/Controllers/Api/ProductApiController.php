@@ -3,20 +3,18 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class ProductApiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // GET: Menampilkan semua produk
     public function index()
     {
         try {
-            // Eager loading kategori untuk menghindari N+1 Query Problem
-            $products = \App\Models\Product::with('category')->get();
+            $products = Product::with('category')->get();
             return response()->json([
                 'message' => 'Berhasil mengambil daftar produk',
                 'data' => $products
@@ -27,20 +25,69 @@ class ProductApiController extends Controller
         }
     }
 
+    // POST: Menyimpan produk baru (Yang Tadi Anda Hilangkan!)
+    public function store(Request $request)
+    {
+        try {
+            // Validasi langsung tanpa butuh file StoreProductRequest terpisah
+            $validated = $request->validate([
+                'name' => 'required|string|max:255',
+                'price' => 'required|numeric',
+                'qty' => 'required|integer',
+                'category_id' => 'nullable|exists:categories,id'
+            ]);
+
+            $validated['user_id'] = Auth::id(); // Ambil ID dari Bearer Token
+
+            $product = Product::create($validated);
+
+            Log::info('API: Menambah data produk', ['list' => $product]);
+
+            return response()->json([
+                'message' => 'Produk berhasil ditambahkan!!',
+                'data' => $product,
+            ], 201);
+        } catch (\Throwable $e) {
+            Log::error('Error saat menambah product: ' . $e->getMessage());
+            return response()->json(['message' => 'Input tidak valid atau terjadi kesalahan'], 500);
+        }
+    }
+
+    // GET: Menampilkan satu produk berdasarkan ID (Yang Tadi Anda Hilangkan!)
+    public function show($id)
+    {
+        try {
+            $product = Product::with('category')->find($id);
+
+            if (!$product) {
+                return response()->json(['message' => 'Product tidak ditemukan'], 404);
+            }
+
+            return response()->json([
+                'message' => 'Product retrieved successfully',
+                'data' => $product
+            ], 200);
+        } catch (\Throwable $e) {
+            Log::error('Gagal mengambil data produk: ' . $e->getMessage());
+            return response()->json(['message' => 'Terjadi kesalahan pada server'], 500);
+        }
+    }
+
+    // PUT: Memperbarui produk
     public function update(Request $request, $id)
     {
         try {
-            $product = \App\Models\Product::find($id);
+            $product = Product::find($id);
 
             if (!$product) {
                 return response()->json(['message' => 'Produk tidak ditemukan'], 404);
             }
 
+            // Keamanan mutlak: Hanya pemilik produk yang boleh edit
             if ($product->user_id !== Auth::id()) {
                 return response()->json(['message' => 'Akses ditolak'], 403);
             }
 
-            // Ganti validasi ini sesuai dengan kolom yang ada di tabel Product Anda
             $validated = $request->validate([
                 'name' => 'required|string|max:255',
                 'price' => 'required|numeric',
@@ -62,15 +109,17 @@ class ProductApiController extends Controller
         }
     }
 
+    // DELETE: Menghapus produk
     public function destroy($id)
     {
         try {
-            $product = \App\Models\Product::find($id);
+            $product = Product::find($id);
 
             if (!$product) {
                 return response()->json(['message' => 'Produk tidak ditemukan'], 404);
             }
 
+            // Keamanan mutlak: Hanya pemilik produk yang boleh hapus
             if ($product->user_id !== Auth::id()) {
                 return response()->json(['message' => 'Akses ditolak'], 403);
             }
